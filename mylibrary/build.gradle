@@ -1,0 +1,73 @@
+apply plugin: 'com.android.library'
+//apply from: 'maven-push.gradle'
+apply plugin: 'com.jfrog.bintray'
+//apply plugin: 'maven-publish'
+apply plugin: 'com.github.dcendents.android-maven'
+
+ext {
+    bintrayRepo = 'Maven'
+    bintrayName = 'mylibrary'
+
+    publishedGroupId = 'com.example.mylibrary'
+    libraryName = 'mylibrary'
+    artifact = 'mylibrary'
+
+    libraryDescription = 'this is demo test'
+
+
+    siteUrl = 'https://github.com/Prachikashyap/webView'
+    gitUrl = 'https://github.com/Prachikashyap/webView'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'prachikashyap'
+    developerName = 'PRACHI'
+    developerEmail = 'prachikashyap022@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+android {
+    compileSdkVersion 26
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+/*bintray {
+    user = 'prachikashyap'
+    key = '76761b1ac13e01f0de7d50b5e96076c829fa389b'
+    pkg {
+        repo = 'DemoRepo'
+        name = 'mylib'
+        userOrg = 'agatsaswpvtltd'
+        version {
+            name = '1.0-Final'
+        }
+    }
+}*/
+apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/installv.gradle'
+apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/bintrayv.gradle'
